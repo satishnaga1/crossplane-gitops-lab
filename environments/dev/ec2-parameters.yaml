@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ec2-parameters
+  namespace: crossplane-system
+data:
+  environment: dev
+  region: us-east-1
+  instance_type: t2.micro
+  instance_name: gitops-ec2
