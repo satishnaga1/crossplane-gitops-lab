@@ -15,7 +15,7 @@ spec:
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: gitops-demo
+    namespace: crossplane-system
 
   syncPolicy:
     automated:
