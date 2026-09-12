@@ -1,1 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
 
+metadata:
+  name: crossplane-gitops
+  namespace: argocd
+
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/satishnaga1/crossplane-gitops-lab.git
+    targetRevision: main
+    path: environments/dev
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
