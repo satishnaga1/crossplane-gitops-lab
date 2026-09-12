@@ -1,0 +1,11 @@
+apiVersion: http.crossplane.io/v1alpha1
+kind: ProviderConfig
+metadata:
+  name: github-http
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      name: github-actions-token
+      namespace: crossplane-system
+      key: token
