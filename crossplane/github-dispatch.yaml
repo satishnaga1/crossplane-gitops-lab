@@ -6,20 +6,18 @@ metadata:
 
 spec:
   forProvider:
-    url: https://api.github.com/repos/satishnaga1/crossplane-gitops-lab/actions/workflows/create-ec2.yml/dispatches
-    method: POST
-
     headers:
       Accept:
         - application/vnd.github+json
       Authorization:
         - "Bearer {{ github-actions-token:crossplane-system:token }}"
       X-GitHub-Api-Version:
-        - "2026-03-10"
+        - "2022-11-28"
       Content-Type:
-        - application/json
+        - "application/json"
 
     payload:
+      baseUrl: https://api.github.com/repos/satishnaga1/crossplane-gitops-lab/actions/workflows/create-ec2.yml/dispatches
       body: |
         {
           "ref": "main",
@@ -30,3 +28,9 @@ spec:
             "instance_name": "crossplane-ec2"
           }
         }
+
+    mappings:
+      - action: CREATE
+        method: POST
+        url: .payload.baseUrl
+        body: .payload.body
