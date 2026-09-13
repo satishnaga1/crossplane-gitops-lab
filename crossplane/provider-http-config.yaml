@@ -1,0 +1,4 @@
+apiVersion: http.crossplane.io/v1alpha2
+kind: ProviderConfig
+metadata:
+  name: default
