@@ -2,7 +2,7 @@ apiVersion: http.crossplane.io/v1alpha2
 kind: Request
 
 metadata:
-  name: github-create-ec2
+  name: github-create-ec2-v2
 
 spec:
   forProvider:
