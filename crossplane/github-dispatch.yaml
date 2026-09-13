@@ -1,0 +1,32 @@
+apiVersion: http.crossplane.io/v1alpha2
+kind: Request
+
+metadata:
+  name: github-create-ec2
+
+spec:
+  forProvider:
+    url: https://api.github.com/repos/satishnaga1/crossplane-gitops-lab/actions/workflows/create-ec2.yml/dispatches
+    method: POST
+
+    headers:
+      Accept:
+        - application/vnd.github+json
+      Authorization:
+        - "Bearer {{ github-actions-token:crossplane-system:token }}"
+      X-GitHub-Api-Version:
+        - "2026-03-10"
+      Content-Type:
+        - application/json
+
+    payload:
+      body: |
+        {
+          "ref": "main",
+          "inputs": {
+            "environment": "dev",
+            "region": "ap-south-1",
+            "instance_type": "t2.micro",
+            "instance_name": "crossplane-ec2"
+          }
+        }
